@@ -70,7 +70,7 @@ myForm.addEventListener("submit", function (event) {
   }
 
   //inserimento dati in card
-  passengerName.textContent = userName;
+  passengerName.textContent = userName.toUpperCase();
   ticketType.textContent = ticketDescription;
   ticketPrice.textContent = finalPrice.toFixed(2) + "€";
   //comparsa card
