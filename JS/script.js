@@ -24,21 +24,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const userKilometers = parseInt(
-  document.getElementById("inputKilometers")
-).value;
-
-const userName = document.getElementById("inputName").value;
 const submitButton = document.getElementById("submit-button");
 const resetButton = document.getElementById("reset-button");
 const myForm = document.getElementById("ticket-form");
-const ageCategory = document.getElementById("input-select").value;
+const passengerName = document.getElementById("passenger-name");
+const ticketType = document.getElementById("ticket-type");
+const ticketPrice = document.getElementById("ticket-price");
 
 myForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+  event.preventDefault(); //Evita l'invio del form
+
+  //Lettura dati inseriti dall'utente
+  const ageCategory = document.getElementById("input-select").value;
+  const userName = document.getElementById("inputName").value;
+  const userKilometers = parseInt(
+    document.getElementById("inputKilometers")
+  ).value;
+
   //Calcolo del prezzo
   let basePrice = userKilometers * 0.21;
-  let ticketType;
+  let ticketDescription;
   let finalPrice;
 
   // Gestione dati form
@@ -46,17 +51,22 @@ myForm.addEventListener("submit", function (event) {
 
   if (ageCategory === "under-eighteen") {
     console.log("under-eighteen");
-    ticketType = "Biglietto ridotto Under 18";
+    ticketDescription = "Biglietto ridotto Under 18";
     finalPrice = basePrice * 0.8; // Sconto 20%
   } else if (ageCategory === "eighteen-sixtyfive") {
     console.log("18-65");
-    ticketType = "Biglietto standard";
+    ticketDescription = "Biglietto standard";
     finalPrice = basePrice; //Non scontato
   } else if (ageCategory === "over-sixtyfive") {
     console.log("over-65");
-    ticketType = "Biglietto ridotto Under 18";
+    ticketDescription = "Biglietto ridotto Over 65";
     finalPrice = basePrice * 0.6; // Sconto 40%
   }
+
+  //inserimento dati in card
+  passengerName.textContent = userName;
+  ticketType.textContent = ticketDescription;
+  ticketPrice.textContent = finalPrice.toFixed(2) + "€";
 });
 
 resetButton.addEventListener("click", function (event) {
