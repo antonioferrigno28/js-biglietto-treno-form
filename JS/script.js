@@ -24,24 +24,39 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const userKilometers = document.getElementById("inputKilometers");
-const userAge = document.getElementById("inputSelect");
-const userName = document.getElementById("inputName");
+const userKilometers = parseInt(
+  document.getElementById("inputKilometers")
+).value;
+
+const userName = document.getElementById("inputName").value;
 const submitButton = document.getElementById("submit-button");
 const resetButton = document.getElementById("reset-button");
 const myForm = document.getElementById("ticket-form");
+const ageCategory = document.getElementById("input-select").value;
 
 myForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Impedisce il comportamento predefinito (ricaricamento della pagina)
+  event.preventDefault();
+  //Calcolo del prezzo
+  let basePrice = userKilometers * 0.21;
+  let ticketType;
+  let finalPrice;
 
-  // Qui puoi aggiungere il codice per gestire i dati del form
+  // Gestione dati form
   console.log("Form inviato senza ricaricare la pagina!");
+
+  if (ageCategory === "under-eighteen") {
+    console.log("under-eighteen");
+  } else if (ageCategory === "eighteen-sixtyfive") {
+    console.log("18-65");
+  } else if (ageCategory === "over-sixtyfive") {
+    console.log("over-65");
+  }
 });
 
 resetButton.addEventListener("click", function (event) {
-  event.preventDefault(); // Impedisce il comportamento predefinito (ricaricamento della pagina)
+  event.preventDefault();
 
-  // Cancella i valori dei campi manualmente
+  // Cancella i valori dei campi
   myForm.reset();
   console.log("Form resettato senza ricaricare la pagina!");
 });
