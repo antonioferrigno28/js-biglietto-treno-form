@@ -30,17 +30,23 @@ const myForm = document.getElementById("ticket-form");
 const passengerName = document.getElementById("passenger-name");
 const ticketType = document.getElementById("ticket-type");
 const ticketPrice = document.getElementById("ticket-price");
+const ticketContainer = document.getElementById("generatedTicketContainer");
 
 myForm.addEventListener("submit", function (event) {
-  event.preventDefault(); //Evita l'invio del form
+  event.preventDefault(); // Evita il comportamento di default del form
 
   //Lettura dati inseriti dall'utente
   const ageCategory = document.getElementById("input-select").value;
   const userName = document.getElementById("inputName").value;
   const userKilometers = parseInt(
-    document.getElementById("inputKilometers")
-  ).value;
+    document.getElementById("inputKilometers").value
+  );
 
+  //controllo che l'utente abbia inserito un numero valido e che sia di km maggiore di 0
+  if (isNaN(userKilometers) || userKilometers <= 0) {
+    alert("Inserisci un numero valido");
+    return;
+  }
   //Calcolo del prezzo
   let basePrice = userKilometers * 0.21;
   let ticketDescription;
@@ -50,15 +56,15 @@ myForm.addEventListener("submit", function (event) {
   console.log("Form inviato senza ricaricare la pagina!");
 
   if (ageCategory === "under-eighteen") {
-    console.log("under-eighteen");
+    //console.log("under-eighteen");
     ticketDescription = "Biglietto ridotto Under 18";
     finalPrice = basePrice * 0.8; // Sconto 20%
   } else if (ageCategory === "eighteen-sixtyfive") {
-    console.log("18-65");
+    //console.log("18-65");
     ticketDescription = "Biglietto standard";
     finalPrice = basePrice; //Non scontato
   } else if (ageCategory === "over-sixtyfive") {
-    console.log("over-65");
+    //console.log("over-65");
     ticketDescription = "Biglietto ridotto Over 65";
     finalPrice = basePrice * 0.6; // Sconto 40%
   }
@@ -67,12 +73,18 @@ myForm.addEventListener("submit", function (event) {
   passengerName.textContent = userName;
   ticketType.textContent = ticketDescription;
   ticketPrice.textContent = finalPrice.toFixed(2) + "€";
+  //comparsa card
+
+  ticketContainer.classList.remove("d-none");
 });
 
 resetButton.addEventListener("click", function (event) {
-  event.preventDefault();
+  event.preventDefault(); // Evita il comportamento di default del form
 
   // Cancella i valori dei campi
   myForm.reset();
   console.log("Form resettato senza ricaricare la pagina!");
+
+  // Nascondi la card
+  ticketContainer.classList.add("d-none");
 });
