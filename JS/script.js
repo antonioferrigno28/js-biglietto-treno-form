@@ -21,3 +21,11 @@
 // Nota:
 // Se non vi sentite particolarmente creativi, questa potrebbe essere un'implementazione da seguire per il secondo milestone. Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra.
 // image.png
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const userKilometers = document.getElementById("inputKilometers");
+const userAge = document.getElementById("inputSelect");
+const userName = document.getElementById("inputName");
+const submitButton = document.getElementById("submit-button");
+const resetButton = document.getElementById("reset-button");
