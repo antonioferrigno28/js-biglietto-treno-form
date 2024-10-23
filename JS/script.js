@@ -53,7 +53,7 @@ myForm.addEventListener("submit", function (event) {
   let finalPrice;
 
   // Gestione dati form
-  console.log("Form inviato senza ricaricare la pagina!");
+  //console.log("Form inviato senza ricaricare la pagina!");
 
   if (ageCategory === "under-eighteen") {
     //console.log("under-eighteen");
@@ -83,7 +83,7 @@ resetButton.addEventListener("click", function (event) {
 
   // Cancella i valori dei campi
   myForm.reset();
-  console.log("Form resettato senza ricaricare la pagina!");
+  //console.log("Form resettato senza ricaricare la pagina!");
 
   // Nascondi la card
   ticketContainer.classList.add("d-none");
