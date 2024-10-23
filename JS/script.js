@@ -29,3 +29,19 @@ const userAge = document.getElementById("inputSelect");
 const userName = document.getElementById("inputName");
 const submitButton = document.getElementById("submit-button");
 const resetButton = document.getElementById("reset-button");
+const myForm = document.getElementById("ticket-form");
+
+myForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Impedisce il comportamento predefinito (ricaricamento della pagina)
+
+  // Qui puoi aggiungere il codice per gestire i dati del form
+  console.log("Form inviato senza ricaricare la pagina!");
+});
+
+resetButton.addEventListener("click", function (event) {
+  event.preventDefault(); // Impedisce il comportamento predefinito (ricaricamento della pagina)
+
+  // Cancella i valori dei campi manualmente
+  myForm.reset();
+  console.log("Form resettato senza ricaricare la pagina!");
+});
